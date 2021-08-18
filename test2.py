@@ -8,7 +8,7 @@ Original file is located at
 """
 
 import pandas as pd
-df = pd.read_csv('D:\AMAN DESKTOP\diabetes.csv')
+df = pd.read_csv('D:\AMAN DESKTOP\diabetesR.csv')
 df.head()
 
 import pandas as pd

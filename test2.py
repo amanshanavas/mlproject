@@ -42,23 +42,23 @@ pickle_in = open('logisticRegr.pkl', 'rb')
 classifier = pickle.load(pickle_in)
 
 st.sidebar.header('Diabetes Prediction App - Aman Shanavas')
-select = st.sidebar.selectbox('Select Form', ['Form 1'], key='2')
-if not st.sidebar.checkbox("Hide", True, key='3'):
-    st.title('Diabetes Prediction(Only for females above 21years of    Age)')
+"""select = st.sidebar.selectbox('Select Form', ['Form 1'], key='2')"""
+if not st.sidebar.checkbox("Hide Website", True, key='3'):
+    st.title('Diabetes Prediction(Only for females above 21 years of    Age)')
     name = st.text_input("Name:")
     pregnancy = st.number_input("No. of times pregnant:")
     glucose = st.number_input("Plasma Glucose Concentration :")
-    bp =  st.number_input("Diastolic blood pressure (mm Hg):")
-    skin = st.number_input("Triceps skin fold thickness (mm):")
+    bp =  st.number_input("Diastolic Blood Pressure (mm Hg):")
+    skin = st.number_input("Triceps Skin Fold thickness (mm):")
     insulin = st.number_input("2-Hour serum insulin (mu U/ml):")
-    bmi = st.number_input("Body mass index (weight in kg/(height in m)^2):")
+    bmi = st.number_input("Body Mass Index (weight in kg/(height in m)^2):")
     dpf = st.number_input("Diabetes Pedigree Function:")
     age = st.number_input("Age:")
 submit = st.button('Predict')
 if submit:
         prediction = classifier.predict([[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]])
         if prediction == 0:
-            st.write('Congratulation',name,', You are not diabetic')
+            st.write('Congratulations',name,', You are not diabetic')
         else:
             st.write(name,"We are sorry to say, but it seems like you are Diabetic.")
 

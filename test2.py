@@ -39,7 +39,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
 
 #Creating the model
-logisticRegr = LogisticRegression(C=1,max_iter=500)
+logisticRegr = LogisticRegression(max_iter=500)
 logisticRegr.fit(X_train, y_train)
 y_pred = logisticRegr.predict(X_test)
 

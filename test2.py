@@ -28,6 +28,7 @@ import streamlit as st
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
 import pickle
 
 # Split dataset into training set and test set
@@ -65,5 +66,6 @@ if submit:
         if prediction == 0:
             st.write('Congratulations',name,', You are not diabetic')
         else:
-            st.write(name,"We are sorry to say, but it seems like you are Diabetic.")
+            st.write(name,", We are sorry to say, but it seems like you are Diabetic.")
+        st.write(accuracy_score(y_test, y_pred))
 

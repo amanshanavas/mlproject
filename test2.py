@@ -73,4 +73,5 @@ if submit:
             st.write('Congratulations',name,', You are not diabetic')
         else:
             st.write(name,", We are sorry to say, but it seems like you are Diabetic.")
+        st.write(accuracy_score(y_test,y_pred))
 

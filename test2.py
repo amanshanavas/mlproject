@@ -9,7 +9,6 @@ Original file is located at
     select = st.sidebar.selectbox('Select Form', ['Form 1'], key='2')
     if not st.sidebar.checkbox("Hide Website", True, key='3'):
 
-
 """
 
 import pandas as pd
@@ -31,8 +30,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix
 import pickle
 
-# Split dataset into training set and test set
-X_train, X_test, y_train, y_test = train_test_split(df[['Pregnancies', 'Glucose','BloodPressure','SkinThickness','Insulin','BMI','DiabetesPedigreeFunction','Age']], df['Outcome'], test_size=0.3, random_state=109)
+# Split dataset into two sets - Training Set and Test Set
+X_train, X_test, y_train, y_test = train_test_split(df[['Pregnancies', 'Glucose','BloodPressure','SkinThickness','Insulin','BMI','DiabetesPedigreeFunction','Age']], df['Outcome'], test_size=0.2, random_state=109)
 
 #Creating the model
 logisticRegr = LogisticRegression(C=1,max_iter=500)
@@ -47,7 +46,8 @@ pickle_out.close()
 pickle_in = open('logisticRegr.pkl', 'rb')
 classifier = pickle.load(pickle_in)
 
-st.sidebar.header('Diabetes Prediction App - Aman Shanavas')
+#Input of Patient Data
+st.sidebar.header('Diabetes Prediction App - Made by Aman Shanavas')
 st.title('Diabetes Prediction(Only for females above 21 years of    Age)')
 name = st.text_input("Name:")
 pregnancy = st.number_input("No. of times pregnant:")
@@ -61,6 +61,7 @@ age = st.number_input("Age:")
     
 submit = st.button('Predict')
 
+#Output
 if submit:
         prediction = classifier.predict([[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]])
         if prediction == 0:

@@ -39,7 +39,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
 
 #Creating the model
-logisticRegr = LogisticRegression(max_iter=900)
+logisticRegr = LogisticRegression()
 logisticRegr.fit(X_train, y_train)
 y_pred = logisticRegr.predict(X_test)
 
@@ -69,14 +69,10 @@ submit = st.button('Predict')
 #Output
 if submit:
         prediction = classifier.predict([[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]])
-        st.write('Prediction is',prediction)
         
         if prediction == 0 or prediction == 0.0:
             st.write('Congratulations',name,', You are not Diabetic')
         else:
             st.write(name,", We are sorry to say, but it seems like you are Diabetic.")
-        st.write(accuracy_score(y_test,y_pred))
-        st.write(confusion_matrix(y_test, y_pred))
-        cls_report = classification_report(y_test, y_pred)
-        st.write(cls_report)
+       
 

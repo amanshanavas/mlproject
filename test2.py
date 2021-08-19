@@ -27,7 +27,7 @@ import streamlit as st
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix,classification_report
 from sklearn.preprocessing import StandardScaler
 import pickle
 
@@ -70,9 +70,13 @@ submit = st.button('Predict')
 if submit:
         prediction = classifier.predict([[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]])
         st.write('Prediction is',prediction)
+        st.write('Prediction type is',prediction.type())
         if prediction == 0:
             st.write('Congratulations',name,', You are not diabetic')
         else:
             st.write(name,", We are sorry to say, but it seems like you are Diabetic.")
         st.write(accuracy_score(y_test,y_pred))
+        st.write(confusion_matrix(y_test, y_pred))
+        cls_report = classification_report(y_test, y_pred)
+        st.write(cls_report)
 

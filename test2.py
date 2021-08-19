@@ -74,5 +74,7 @@ if submit:
             st.write('Congratulations',name,', You are not Diabetic')
         else:
             st.write(name,", We are sorry to say, but it seems like you are Diabetic.")
+            st.write(accuracy_score(y_test, y_pred))
+            st.write(confusion_matrix(y_test, y_pred))
        
 

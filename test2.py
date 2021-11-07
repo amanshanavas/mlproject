@@ -69,7 +69,7 @@ submit = st.button('Predict')
 #Output
 if submit:
         prediction = classifier.predict([[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]])
-        st.write('Prediction is',prediction)
+        st.write(' ')
         if prediction == 0 or prediction == 0.0:
             st.write('Congratulations',name,', you are not Diabetic')
         else:
